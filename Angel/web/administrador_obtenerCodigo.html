@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>Angel-Generar Código</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="imagenes/icono.png" />
+
+        <link rel="shortcut icon" href="favicon.ico"> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+        <style>
+            body{
+                background: url(imagenes/wallcode.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;      
+                background-size: cover;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }   
+            main {
+                flex: 1 0 auto;
+            }
+
+            footer {
+                background-color: black;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+
+            } .input-field label {
+                color: black!important;
+            }
+            /* label focus color */
+            .input-field input[type=email]:focus + label {
+                color: black! important;
+            }
+            /* label underline focus color */
+            .input-field input[type=email]:focus {
+                border-bottom: 1px solid #0d47a1! important;
+                box-shadow: 0 1px 0 0 #0d47a1 ! important;
+            }
+
+            .input-field input[type=email].valid {
+                border-bottom: 1px solid #76ff03!important;
+                box-shadow: 0 1px 0 0 #76ff03!important;
+            }
+
+            .input-field input[type=email].invalid {
+                border-bottom: 1px solid red !important;
+                box-shadow: 0 1px 0 0 red!important;
+            }
+            /* icon prefix focus color */
+            .input-field .prefix.active {
+                color: #000;
+            }
+        </style>
+        <script>
+
+            function email() {
+                var letras = "@._-1234567890ABCDEFGHIKKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                var x = event.keyCode;
+                var letra = String.fromCharCode(x);
+                var n = letras.indexOf(letra);
+                if (n === -1) {
+                    event.returnValue = false;
+                }
+            }
+        </script>
+    </head>
+
+
+    <body>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav();
+            });
+        </script>
+
+
+        <nav>
+            <div class="nav-wrapper grey darken-1">
+                <a  class="brand-logo center flow-text"><i class="material-icons">cloud</i>"Angel"</a>
+                <a data-target="mobile-demo" class="sidenav-trigger" href="administrador_home.jsp"><i class="material-icons left white-text">arrow_back</i>Regresar</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="administrador_home.jsp"><i class="material-icons left">arrow_back</i>Regresar al inicio</a></li>                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="col s12 white" style="text-align: center; margin-top: 11em">
+                <h3>Genera un código de usuario</h3>
+                <h5>Solo da click al botón y se generará uno en automàtico</h5>
+                ¡Asì de fácil!
+                <br>
+                <a class="waves-effect waves-light btn-large grey darken-1" href="generar_codigo"><i class="material-icons left">vpn_key</i>Generar Còdigo</a>
+                <br><br>
+            </div>
+        </div>                
+                               
+
+
+    <footer class="page-footer grey darken-1">
+        <div class="container" style="text-align: center">
+            <h5>© 2018 Trinity Corps</h5>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

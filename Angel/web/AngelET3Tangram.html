@@ -1,0 +1,327 @@
+<head>
+    <meta charset="utf-8">
+    <title>Angel-ET3:Tangram</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagenes/icono.png" />
+
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*blocks*/
+        .block{
+            position:relative;
+        }
+
+        #square { 
+            width: 110px; 
+            height: 100px; 
+            background: #16a085; 
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top:67px;
+            left: 800px;
+        }
+
+        #triangle1 { 
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 80px 80px 80px;
+            border-color: transparent transparent #f1c40f transparent; 
+            left: 1100px;
+        }
+
+        #triangle2 { 
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 150px 0 150px 150px;
+            border-color: transparent transparent    transparent #e74c3c;
+            top:-100px;
+            left: 500px;
+        }
+
+        #triangle3 {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 150px 150px 0 150px;
+            border-color: #007bff transparent transparent transparent;
+            top:-100px;
+            left: 750px;
+        }
+
+        #triangle4 { 
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 150px 150px;
+            border-color: transparent transparent #d63294 transparent;
+            top:-300px;
+            left: 500px;
+        }
+
+        #triangle5 {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 80px 80px 80px 0;
+            border-color: transparent #69dcf0 transparent transparent;
+            top: -600px;
+            left: 1200px;
+        }
+
+        #parallelogram {
+            width: 150px;
+            height: 70px;
+            -webkit-transform: skew(-45deg);
+            -moz-transform: skew(-45deg);
+            -o-transform: skew(-45deg);
+            background: #e67e22;
+            top:-600px;
+            left: 1100px;
+        }
+
+        /*Page layout*/
+        #blockTray {
+            float: left;
+            height: 99%;
+            width: 20%;
+            padding:5px;
+        }
+
+        #canvas {
+            float: left;
+            height: 85%;
+            width: 70%;
+            text-align: center;
+            vertical-align: top;
+            background-color: #ecf0f1;
+            margin:3%;
+            border-radius: 30px;
+        }
+
+        #instruction {
+            margin-top: 150px; 
+            font-size: 24px;
+            color: #bdc3c7;
+        }
+
+        body{
+            background: url(https://cdn.pixabay.com/photo/2017/01/08/21/11/wood-1963988_960_720.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;      
+            background-size: cover;
+        } 
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol {list-style: none}
+        .container {
+            width: 100%;
+            height: 95%;
+            max-width: 350px;
+            padding: 0 15px;
+            margin: 10px auto 0;
+            position: absolute;
+        }
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            -webkit-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            overflow: hidden;
+            position: relative;
+            border-radius: 15px;
+        }
+        .slider ul, .slider ul li {width: 100%; height: 100%}
+        .slider ul {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+        .slider ul li {
+            text-align: center;
+            line-height: 400px;
+            font-size: 50px;
+            color: #aaa
+        }
+        .slider ul li:first-of-type {background: #222}
+        .slider ul li:nth-of-type(2) {background: #252525}
+        .slider ul li:nth-of-type(3) {background: #222}
+        .slider ul li:nth-of-type(4) {background: #252525}
+        .slider ul li:last-of-type {background: #222}
+        .slider ol {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            padding-right: 15px;
+            -webkit-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+        }
+        .slider ol li {
+            width: 7px;
+            height: 30px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255,.3);
+            cursor: pointer
+        }
+        .slider ol li:hover, .slider ol li.active {
+            background: #eee
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".slider ol li").on("click", function () {
+                $(this).addClass("active").siblings("li").removeClass("active");
+                $(".slider ul").animate({
+                    top: -$(".slider").height() * $(this).index()
+                }, 500);
+            });
+            $('.block').draggable({
+                containment: 'window',
+                stack: '.block',
+                snap: true,
+                snapMode: 'outer',
+                snapTolerance: 13,
+            });
+
+            $('#blockTray').on('mousedown', function () {
+                $('#instruction').fadeOut('slow');
+            });
+
+            // Make blocks rotate 90 deg on each click
+            var angle = 90;
+
+            $('.block').click(function () {
+
+                $(this).css({
+                    '-webkit-transform': 'rotate(' + angle + 'deg)',
+                    '-moz-transform': 'rotate(' + angle + 'deg)',
+                    '-o-transform': 'rotate(' + angle + 'deg)',
+                    '-ms-transform': 'rotate(' + angle + 'deg)'
+                });
+                angle += 90;
+            });
+
+        });
+    </script>
+    <script>
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider">
+            <ul>
+                <li>
+                    <div class="row" style="text-align: center">
+                        <div class="container">
+                            Figura 1
+                            <center>
+                                <img class="materialboxed" width="250" alt="1" src="https://bigscoutproject.files.wordpress.com/2010/11/tangram-diagram.jpg" style="z-index: 100;">
+                            </center>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row" style="text-align: center">
+                        <div class="container">
+                            Figura 2
+                            <center>
+                                <img class="materialboxed" width="250" alt="2" src="https://i.pinimg.com/236x/7d/70/25/7d70250096374aaa85263ca60c5dc928--tangram-mindfulness.jpg" style="z-index: 100;">
+                            </center>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row" style="text-align: center">
+                        <div class="container">
+                            Figura 3
+                            <center>
+                                <img class="materialboxed" width="250" alt="3" src="https://image.shutterstock.com/image-photo/tangram-450w-105757127.jpg" style="z-index: 100;">
+                            </center>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row" style="text-align: center">
+                        <div class="container">
+                            Figura 4
+                            <center>
+                                <img class="materialboxed" width="250" alt="4" src="imagenes/condort.jpg" style="z-index: 100;">
+                            </center>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row" style="text-align: center">
+                        <div class="container">
+                            Figura 5
+                            <center>
+                            <img class="materialboxed" width="250" alt="5" src="https://i.pinimg.com/236x/1f/07/bc/1f07bce11b27f708dedefc1e861ecacd--tangram-educational-games.jpg" style="z-index: 100;">
+                            </center>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+    <div id="blockTray">
+
+        <div id="square" class="block"></div>
+        <div id="triangle1" class="block"></div>
+        <div id="triangle2" class="block"></div>
+        <div id="triangle3" class="block"></div>
+        <div id="triangle4" class="block"></div>
+        <div id="triangle5" class="block"></div>
+        <div id="parallelogram" class="block"></div>
+
+    </div>
+
+    <div id="canvas">
+        <div id="instruction">
+            <h1>Angel-Tangram</h1>
+            <p>¡Arrastra una y empieza a jugar!</p>
+            <p>¡Click para girar!</p>
+        </div>
+    </div>
+
+
+</body>

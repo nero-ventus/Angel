@@ -1,0 +1,301 @@
+<html>
+    <head>
+        <title>Angel-LogIn</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" href="imagenes/icono.png" />
+        <link rel="shortcut icon" href="favicon.ico"> 
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/validaciones.js"></script>
+
+        <style>
+            body{
+                background: url(imagenes/fondoangellog.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;      
+                background-size: cover;
+            }   
+            /* label color */
+            .input-field label {
+                color: black!important;
+            }
+            /* label focus color */
+            .input-field input[type=text]:focus + label {
+                color: black! important;
+            }
+            /* label underline focus color */
+            .input-field input[type=text]:focus {
+                border-bottom: 1px solid #0d47a1! important;
+                box-shadow: 0 1px 0 0 #0d47a1 ! important;
+            }
+
+            .input-field input[type=text].valid {
+                border-bottom: 1px solid #76ff03!important;
+                box-shadow: 0 1px 0 0 #76ff03!important;
+            }
+
+            .input-field input[type=text].invalid {
+                border-bottom: 1px solid red !important;
+                box-shadow: 0 1px 0 0 red!important;
+            }
+            /* icon prefix focus color */
+            .input-field .prefix.active {
+                color: #000;
+            }
+            .input-field input[type=password]:focus + label {
+                color: black! important;
+            }
+            /* label underline focus color */
+            .input-field input[type=password]:focus {
+                border-bottom: 1px solid #0d47a1! important;
+                box-shadow: 0 1px 0 0 #0d47a1 ! important;
+            }
+
+            .input-field input[type=password].invalid {
+                border-bottom: 1px solid red !important;
+                box-shadow: 0 1px 0 0 red!important;
+
+            }
+
+            .input-field input[type=password].valid {
+                border-bottom: 1px solid #76ff03!important;
+                box-shadow: 0 1px 0 0 #76ff03!important;
+            }
+            ul.dropdown-content.select-dropdown li span {
+                color: #03a9f4; /* no need for !important :) */
+            }   
+            *::-webkit-input-placeholder {
+                /* Google Chrome y Safari */
+                color: #757575;
+            }
+        </style>
+
+        <script>
+            function revelarContra1() {
+                var x = document.getElementById("contra");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+            function revelarContra2() {
+                var x = document.getElementById("ccontra");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+            function revelarContrasesiones() {
+                var x = document.getElementById("iniciarsesioncontra");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+            function revelarContrasesionesMobiles() {
+                var x = document.getElementById("iniciarsesionmobilecontra");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }</script>
+    </head>
+
+
+    <body>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav();
+                $('select').formSelect();
+                $('.fixed-action-btn').floatingActionButton();
+            });
+        </script>
+        <nav class="nav-wrapper flow-text light-blue lighten-2 col s12">
+            <div class="nav-wrapper col s12">
+                <a  class="brand-logo flow-text" href="AngelAcercadeNosotros.html"><i class="material-icons">cloud</i>"Angel"</a>
+                <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons left white-text">account_circle</i>Inicia</a>
+                <div class="miform s12">
+                    <form action="seguridad_inicio_sesion" method="post">   
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a href="AngelLogInAdmins.html"><i class="material-icons left">business_center</i>¿Eres administrador?</a></li>
+
+                            <li>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input style="placeholder { color: blue; }"  name="correo" id="iniciarsesionnombre" name="correo"  onkeypress="email()" placeholder="Correo" pattern="^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$" required type="text" class="validate white-text">
+
+                                </div>
+
+
+                            </li>
+                            <li class="col s2">
+                                <div class="input-field col">
+                                    <i class="material-icons prefix">https</i>
+                                    <input  name="contra" id="iniciarsesioncontra" name="contra" onkeypress="alfanumerico()" placeholder="Contraseña" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" required type="password" class="validate white-text">
+                                </div>          
+
+                            </li> 
+                            <li class="col ">
+                                <div class="col  valign-wrapper" ><br>
+                                    <a class="btn-floating btn-small transparent" onclick="revelarContrasesiones()" style="text-align: center; padding: 0"><i class="material-icons black-text">remove_red_eye</i></a>
+                                </div>
+                            </li>   
+                            <li>
+                                <a href="AngelRecuperarContraseña.html" class="black-text">¿Olvidaste Tu contraseña?</a>
+                            </li>
+                            <li>
+                                <button class="btn-large white black-text waves-effect waves-light" type="submit" name="action">Entrar<i class="light-blue-text material-icons right">send</i>
+                                </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <form action="seguridad_inicio_sesion" method="post">                
+            <ul class="sidenav flow-text" id="mobile-demo" style="text-align: center">
+                <li> 
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="iniciarsesionmobilenombre" name="correo" onkeypress="email()" pattern="^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$" required type="text" class="validate">
+                        <label for="iniciarsesionmobilenombre" >Correo de Usuario:</label>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix ">https</i>
+                        <input id="iniciarsesionmobilecontra" name="contra" onkeypress="alfanumerico()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" required type="password" class="validate">
+                        <label for="iniciarsesionmobilecontra">Contraseña:</label>
+                        <a class="btn-floating btn-small  transparent" onclick="revelarContrasesionesMobiles()" style="text-align: center; padding: 0"><i class="material-icons black-text">remove_red_eye</i></a>
+                    </div>          
+                </li> 
+                <li>
+                    <a href="AngelRecuperarContraseña.html" > ¿Olvidaste Tu contraseña?</a>
+                </li>
+                <li>
+                    <button class="btn-large light-blue white-text waves-effect waves-light" type="submit" name="action">Entrar<i class="white-text material-icons right">send</i>
+                    </button>
+                </li>
+                <li><a href="AngelLogInAdmins.html"><i class="material-icons right">business_center</i>¿Eres administrador?</a></li>
+
+            </ul>
+        </form>  
+        <div class="row flow-text" >
+            <div class="col s10 m7 l6 white offset-m5 offset-l6 offset-s1" style="text-align: center">
+                <h3>¡Regístrate!</h3><h4>Y obtén seguridad para tu bebé</h4>
+                <form action="registra_usuario" method="post">
+                    <div class="input-field col s4 m4">   
+                        <input type="text" onkeypress="letras()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" name="nombre" class="validate" id="nombre" required placeholder="Nombre(s)">
+                        <label for="nombre">Nombre</label>
+
+                    </div>
+                    <div class="input-field col s4">   
+                        <input type="text" onkeypress="letras()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" name="apellido_p" class="validate" id="apellido_p" required placeholder="Apellido Paterno">
+                        <label for="apellido_p">Primer Apellido</label>
+
+                    </div>
+                    <div class="input-field col s4">
+                        <input type="text" onkeypress="letras()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" name="apellido_m" class="validate" id="apellido_m" required placeholder="Apellido Materno">
+                        <label for="apellido_m">Segundo Apellido</label>
+
+                    </div>
+                    <div class="input-field col s12 m6 l6">
+                        <input type="text" onkeypress="email()" name="correo" id="correo" class="validate" pattern="^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$" required placeholder="Correo electronico">
+                        <label for="correo">Email:</label>
+
+                    </div>
+                    <div class="input-field col s6 m3 l3">
+                        <input class=" col s10" onchange="if (this.checkValidity())
+                                    form.ccontra.pattern = this.value;" type="password" onkeypress="alfanumerico()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" class="validate" name="contra" id="contra" required placeholder="Contraseña">
+                        <label for="contra">Contraseña:</label><a class="btn-floating  btn-small col s2 transparent" onclick="revelarContra1()" style="text-align: center;padding: 0"><i class="material-icons black-text left">remove_red_eye</i></a>
+
+                    </div>
+                    <div class="input-field col s6 m3 l3">
+                        <input class="col s10" onchange="this.setCustomValidity(this.validity.patternMismatch ? '¡Por favor ingrese contraseñas que coincidan!' : '');" type="password" oninput="check(this)" onkeypress="alfanumerico()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" class="validate" name="ccontra" id="ccontra" required placeholder="Confirmar contraseña">
+                        <label for="ccontra">Confirma Cont.</label><a class="btn-floating btn-small col s2 transparent" onclick="revelarContra2()" style="text-align: center; padding: 0"><i class="material-icons black-text left">remove_red_eye</i></a>
+
+                    </div>
+                    <div class="input-field col s6 m3 l3">
+                        <input type="text" onkeypress="alfanumerico()" name="codigo" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" class="validate" id="codigo" required placeholder="Tu Código">
+                        <label for="codigo">Cod. Producto:</label>
+
+                    </div>
+                    <div class="input-field col s6 m3 l3">
+                        <input type="text" onkeypress="numerico()" pattern="^[0-9]+$" class="validate" name="nex" id="nex" required placeholder="N°Exterior">
+                        <label for="nex">Núm. Ext.</label>
+
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" onkeypress="alfanumerico()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" class="validate" name="calle" id="calle" required placeholder="Calle">
+                        <label for="calle">Calle:</label>
+
+                    </div>
+                    <div class="input-field col s6 m4 l4">
+                        <input type="text" onkeypress="alfanumerico()" pattern="^[A-Z a-z 0-9 \u00E0-\u00FC À-ÿ]+$" class="validate" name="municipio" id="municipio" required placeholder="Municipio">
+                        <label for="municipio">Municipio:</label>
+                    </div>
+                    <div class="input-field col s5 m4 l4 blue-text flow-text">
+                        <select class="validate flow-text" required name="estado" >
+                            <option value="0" selected disabled>Seleccione un estado</option>
+                            <option value="1">Ciudad de Mexico</option>
+                            <option value="2">Aguascalientes</option>
+                            <option value="3">Baja California</option>
+                            <option value="4">Baja California Sur</option>
+                            <option value="5">Campeche</option>
+                            <option value="6">Chiapas</option>
+                            <option value="7">Chihuahua</option>
+                            <option value="8">Coahuila</option>
+                            <option value="9">Colima</option>
+                            <option value="10">Durango</option>
+                            <option value="11">Estado de México</option>
+                            <option value="12">Guanajuato</option>
+                            <option value="13">Guerrero</option>
+                            <option value="14">Hvaluealgo</option>
+                            <option value="15">Jalisco</option>
+                            <option value="16">Michoacán</option>
+                            <option value="17">Morelos</option>
+                            <option value="18">Nayarit</option>
+                            <option value="19">Nuevo León</option>
+                            <option value="20">Oaxaca</option>
+                            <option value="21">Puebla</option>
+                            <option value="22">Querétaro</option>
+                            <option value="23">Quintana Roo</option>
+                            <option value="24">San Luis Potosí</option>
+                            <option value="25">Sinaloa</option>
+                            <option value="26">Sonora</option>
+                            <option value="27">Tabasco</option>
+                            <option value="28">Tamaulipas</option>
+                            <option value="29">Tlaxcala</option>
+                            <option value="30">Veracruz</option>
+                            <option value="31">Yucatán</option>
+                            <option value="32">Zacatecas</option>
+                        </select>
+                    </div>
+
+                    <button  class="btn-large light-blue lighten-3 black-text waves-effect waves-light" type="submit" name="action">Registrar<i class="black-text material-icons right">send</i>
+                    </button>              
+                </form>
+            </div>        
+        </div>
+
+    </body>
+</html>
+
+
+

@@ -1,0 +1,534 @@
+package org.apache.jsp;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+import com.angel.impdao.impafecciones;
+import com.angel.dao.Iafeccionesdao;
+import com.angel.modelo.afecciones;
+import com.angel.modelo.infante;
+import com.angel.impdao.impinfante;
+import com.angel.dao.Iinfantedao;
+import com.angel.modelo.dispositivo;
+import java.util.ArrayList;
+import com.angel.impdao.impdispositivo;
+import com.angel.dao.Idispositivodao;
+import org.owasp.esapi.ESAPI;
+import com.angel.impdao.impusuario;
+import com.angel.dao.Iusuariodao;
+import com.angel.modelo.usuario;
+import com.angel.modelo.cuenta_usuario;
+import com.angel.seguridad.encriptador;
+
+public final class gestion_005freporte_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <title>Angel-Gestión Infantil</title>\n");
+      out.write("        <meta charset=\"UTF-8\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("        <link rel=\"icon\" type=\"image/png\" href=\"imagenes/icono.png\" />\n");
+      out.write("\n");
+      out.write("        <link rel=\"shortcut icon\" href=\"favicon.ico\"> \n");
+      out.write("        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n");
+      out.write("        <!--Import materialize.css-->\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/materialize.min.css\" media=\"screen,projection\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n");
+      out.write("        <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.2.1.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js\"></script>\n");
+      out.write("        <script type=\"text/javascript\" src=\"js/validaciones.js\"></script>\n");
+      out.write("\n");
+      out.write("        <style>\n");
+      out.write("            body{\n");
+      out.write("                background: url(imagenes/fondous4.jpg) no-repeat center center fixed;\n");
+      out.write("                -webkit-background-size: cover;\n");
+      out.write("                -moz-background-size: cover;\n");
+      out.write("                -o-background-size: cover;      \n");
+      out.write("                background-size: cover;\n");
+      out.write("            }  \n");
+      out.write("            .dropdown-content li>a {\n");
+      out.write("                color: white !important;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            tbody {\n");
+      out.write("                display:block;\n");
+      out.write("                height:500px;\n");
+      out.write("                overflow:auto;\n");
+      out.write("            }\n");
+      out.write("            thead, tbody tr {\n");
+      out.write("                display:table;\n");
+      out.write("                width:100%;\n");
+      out.write("                table-layout:fixed;\n");
+      out.write("            }\n");
+      out.write("            thead {\n");
+      out.write("                width: calc( 100% - 1em )\n");
+      out.write("            }\n");
+      out.write("            table {\n");
+      out.write("                width:100%;\n");
+      out.write("            }\n");
+      out.write("            nav{\n");
+      out.write("                position: fixed;\n");
+      out.write("                top: 0;\n");
+      out.write("                z-index: 1;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .contenedor-principal{\n");
+      out.write("                margin-top: 4.5em;\n");
+      out.write("                position: relative;\n");
+      out.write("                z-index: 0;\n");
+      out.write("            }\n");
+      out.write("            .input-field label {\n");
+      out.write("                color: #2196f3!important;\n");
+      out.write("            }\n");
+      out.write("            /* label focus color */\n");
+      out.write("            .input-field input[type=text]:focus + label {\n");
+      out.write("                color: black! important;\n");
+      out.write("            }\n");
+      out.write("            /* label underline focus color */\n");
+      out.write("            .input-field input[type=text]:focus {\n");
+      out.write("                border-bottom: 1px solid #0d47a1! important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #0d47a1 ! important;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=text].valid {\n");
+      out.write("                border-bottom: 1px solid #76ff03!important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #76ff03!important;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=text].invalid {\n");
+      out.write("                border-bottom: 1px solid red !important;\n");
+      out.write("                box-shadow: 0 1px 0 0 red!important;\n");
+      out.write("            }\n");
+      out.write("            /* icon prefix focus color */\n");
+      out.write("            .input-field .prefix.active {\n");
+      out.write("                color: #000;\n");
+      out.write("            }\n");
+      out.write("            *::-webkit-input-placeholder {\n");
+      out.write("                /* Google Chrome y Safari */\n");
+      out.write("                color: #757575;\n");
+      out.write("            }\n");
+      out.write("            .switch label input[type=checkbox]:checked+.lever {\n");
+      out.write("                background-color: #64b5f6;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .switch label input[type=checkbox]:checked+.lever:after {\n");
+      out.write("                background-color: #1565c0;\n");
+      out.write("            }\n");
+      out.write("            ul.dropdown-content.select-dropdown li span {\n");
+      out.write("                color: #03a9f4; /* no need for !important :) */\n");
+      out.write("            }   \n");
+      out.write("            *::-webkit-input-placeholder {\n");
+      out.write("                /* Google Chrome y Safari */\n");
+      out.write("                color: #757575;\n");
+      out.write("            }\n");
+      out.write("            .input-field input[type=date]:focus + label {\n");
+      out.write("                color: black! important;\n");
+      out.write("            }\n");
+      out.write("            /* label underline focus color */\n");
+      out.write("            .input-field input[type=date]:focus {\n");
+      out.write("                border-bottom: 1px solid #0d47a1! important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #0d47a1 ! important;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=date].invalid {\n");
+      out.write("                border-bottom: 1px solid red !important;\n");
+      out.write("                box-shadow: 0 1px 0 0 red!important;\n");
+      out.write("\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=date].valid {\n");
+      out.write("                border-bottom: 1px solid #76ff03!important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #76ff03!important;\n");
+      out.write("            }\n");
+      out.write("            .input-field input[type=search]:focus + label {\n");
+      out.write("                color: black! important;\n");
+      out.write("            }\n");
+      out.write("            /* label underline focus color */\n");
+      out.write("            .input-field input[type=search]:focus {\n");
+      out.write("                border-bottom: 1px solid #0d47a1! important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #0d47a1 ! important;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=search].invalid {\n");
+      out.write("                border-bottom: 1px solid red !important;\n");
+      out.write("                box-shadow: 0 1px 0 0 red!important;\n");
+      out.write("\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .input-field input[type=search].valid {\n");
+      out.write("                border-bottom: 1px solid #76ff03!important;\n");
+      out.write("                box-shadow: 0 1px 0 0 #76ff03!important;\n");
+      out.write("            }\n");
+      out.write("            [type=\"checkbox\"].filled-in:checked + span:not(.lever):after {\n");
+      out.write("                top: 0;\n");
+      out.write("                width: 20px;\n");
+      out.write("                height: 20px;\n");
+      out.write("                border: 2px solid #1565c0 ;\n");
+      out.write("                background-color: #90caf9 ;\n");
+      out.write("                z-index: 0;\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
+      out.write("\n");
+      out.write("    </head>\n");
+      out.write("    <script>\n");
+      out.write("        function presiona2() {\n");
+      out.write("            setTimeout(function () {\n");
+      out.write("                window.location.replace('AngelLogIn.html');\n");
+      out.write("            }, 0);\n");
+      out.write("        }\n");
+      out.write("\n");
+      out.write("    </script>\n");
+      out.write("\n");
+      out.write("    <body>\n");
+      out.write("        ");
+
+            HttpSession datos_sesion = request.getSession();
+            String correo, contra;
+            encriptador descripta = new encriptador();
+            correo = descripta.desencriptar((String) (datos_sesion.getAttribute("correo")));
+            contra = descripta.desencriptar((String) (datos_sesion.getAttribute("contra")));
+            int valida = 0;
+            Iusuariodao user = new impusuario();
+            usuario usua = null;
+
+            cuenta_usuario cuenta = null;
+            try {
+                cuenta = new cuenta_usuario(correo, contra, 0, "0");
+                valida = 1;
+            } catch (Exception e) {
+                out.println("<script>alert('Datos erroneos');</script>");
+                out.print("<Script>presiona2();</Script>");
+            }
+            if (valida == 1) {
+                usua = user.traeusuario(cuenta);
+
+                if (!(usua == null)) {
+        
+      out.write("\n");
+      out.write("        <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>\n");
+      out.write("        <script type=\"text/javascript\" src=\"js/materialize.min.js\"></script>\n");
+      out.write("        <script type=\"text/javascript\" src=\"js/script.js\"></script>\n");
+      out.write("        <script>\n");
+      out.write("        $(document).ready(function () {\n");
+      out.write("            $('.sidenav').sidenav();\n");
+      out.write("            $(\".dropdown-trigger\").dropdown();\n");
+      out.write("            $('.modal').modal();\n");
+      out.write("            $('select').formSelect();\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        });\n");
+      out.write("        </script>\n");
+      out.write("        <ul id=\"dropdown1\" class=\"dropdown-content\">\n");
+      out.write("            <li class=\"blue flow-text\"><a href=\"Home.jsp\"><i class=\"material-icons left\">home</i>Inicio</a></li>\n");
+      out.write("            <li class=\"blue flow-text\"><a href=\"AngelUsuario.jsp\"><i class=\"material-icons left\">edit</i>Usuario</a></li>\n");
+      out.write("            <li class=\"blue flow-text\"><a href=\"AngelLocalizacion.jsp\"><i class=\"material-icons left\">my_location</i>Ubicación</a></li>\n");
+      out.write("            <li class=\"blue flow-text\"><a href=\"badges.html\"><i class=\"material-icons left\">help</i>Ayuda</a></li>\n");
+      out.write("            <li class=\"blue flow-text\"><a href=\"cerrar_sesion\"><i class=\"material-icons left\">power_settings_new</i>Salir</a></li>\n");
+      out.write("        </ul>\n");
+      out.write("        <nav class=\"blue\" style=\"z-index: 99999\">\n");
+      out.write("            <div class=\"nav-wrapper \">\n");
+      out.write("                <a class=\"brand-logo flow-text center\"><i class=\"material-icons t\">child_friendly</i>Gestión Infantil</a>\n");
+      out.write("                <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons right\">menu</i></a>\n");
+      out.write("                <ul class=\"right hide-on-med-and-down\">\n");
+      out.write("                    <li><a class=\"dropdown-trigger\" href=\"#!\" data-target=\"dropdown1\"><i class=\"material-icons right\">arrow_drop_down</i><i class=\"material-icons right\">account_box</i>");
+ out.print(ESAPI.encoder().decodeForHTML(usua.getNombre())); 
+      out.write("</a></li>\n");
+      out.write("                </ul>\n");
+      out.write("            </div>\n");
+      out.write("        </nav> \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <ul class=\"sidenav blue\" id=\"mobile-demo\"style=\"margin-top: 4.5em\" >\n");
+      out.write("            <li class=\"blue white-text flow-text\"><a  class=\"white-text\"><i class=\"material-icons left white-text\">person_pin</i>");
+ out.print("Bienvenido: " + ESAPI.encoder().decodeForHTML(usua.getNombre()));
+      out.write("</a></li>\n");
+      out.write("            <li class=\"blue white-text flow-text\" ><a href=\"Home.jsp\" class=\" white-text\"><i class=\"material-icons left white-text\">home</i>Regresar a Inicio</a></li>\n");
+      out.write("            <li class=\"blue white-text flow-text\"><a href=\"AngelUsuario.jsp\" class=\"white-text\"><i class=\"material-icons left white-text\">edit</i>Editar Información</a></li>\n");
+      out.write("            <li class=\"blue white-text flow-text\"><a href=\"AngelLocalizacion.jsp\" class=\"white-text\"><i class=\"material-icons left white-text\">my_location</i>Localización</a></li>\n");
+      out.write("            <li class=\"blue white-text flow-text\" ><a href=\"badges.html\" class=\"white-text\"><i class=\"material-icons left white-text\">help</i>Ayuda</a></li>\n");
+      out.write("            <li class=\"blue white-text flow-text\"><a href=\"cerrar_sesion\" class=\"white-text\"><i class=\"material-icons left white-text\">power_settings_new</i>Cerrar Sesión</a></li>\n");
+      out.write("        </ul>\n");
+      out.write("\n");
+      out.write("        <div class=\"contenedor-principal\">\n");
+      out.write("            <div class=\"container\">\n");
+      out.write("                <div class=\"row\">\n");
+      out.write("                    <div class=\"responsive-table table-status-sheet\"style=\"margin-top: 5em\">\n");
+      out.write("                        <table class=\"bordered white\">\n");
+      out.write("                            <thead>\n");
+      out.write("                                <tr>\n");
+      out.write("\n");
+      out.write("                                    <th class=\"center flow-text\"><H5>Agrega aqui los datos de tus bebés</H5></th>\n");
+      out.write("                                   \n");
+      out.write("                                    <th class=\"center flow-text\"> <a class=\" btn modal-trigger right blue flow-tex col s12\" href=\"#agregarcontacto\">  <i class=\"material-icons right\">group_add</i>Añadir Bebé</a>\n");
+      out.write("\n");
+      out.write("                                        <!-- Modal Structure -->\n");
+      out.write("                                        <div id=\"agregarcontacto\" class=\"modal \" style=\"margin-top: 1em\">\n");
+      out.write("                                            <div class=\"modal-content\">\n");
+      out.write("                                                <h4>¡Agrega un bebé!</h4>\n");
+      out.write("                                                <form action=\"registra_infante\" method=\"post\">\n");
+      out.write("                                                    <div class=\"input-field col s12 m3 l3\">\n");
+      out.write("                                                        <input placeholder=\"Nombre del Bebé\" pattern=\"^[A-Za-z ]+$\"  onkeypress=\"letras()\" id=\"nombre\" name=\"nombre\" type=\"text\" class=\"validate\" required>\n");
+      out.write("                                                        <label for=\"nombre\">Nombre</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("\n");
+      out.write("                                                    <div class=\"input-field col s12 m3 l3\">\n");
+      out.write("                                                        <input placeholder=\"Apellido P. del Bebé\" pattern=\"^[A-Za-z ]+$\" onkeypress=\"letras()\" id=\"apellido_p\" name=\"apellido_p\" type=\"text\" class=\"validate\" required>\n");
+      out.write("                                                        <label for=\"apellido_p\">Apellido Paterno</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"input-field col s12 m3 l3\">\n");
+      out.write("                                                        <input placeholder=\"Apellido M. del Bebé\" pattern=\"^[A-Za-z ]+$\" onkeypress=\"letras()\" id=\"apellido_m\" name=\"apellido_m\" type=\"text\" class=\"validate\" required>\n");
+      out.write("                                                        <label for=\"apellido_m\">Apellido Materno</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"input-field col s12 m3 l3\">\n");
+      out.write("                                                        <select id=\"dispositivo\" name=\"dispositivo\" required>\n");
+      out.write("                                                            <option value=\"0\" selected disabled>Seleccione algun sipositivo</option>\n");
+      out.write("                                                            ");
+
+                                                                Idispositivodao dispos=new impdispositivo();
+                                                                ArrayList<dispositivo> libre=dispos.tredispositivosLibres(correo);
+                                                                for(int i=0;i<libre.size();i++){
+                                                            
+      out.write("\n");
+      out.write("                                                            <option value=\"");
+out.print(libre.get(i).getId_dispositivo());
+      out.write('"');
+      out.write('>');
+out.print(libre.get(i).getId_dispositivo());
+      out.write("</option>\n");
+      out.write("                                                            ");
+
+                                                                }
+                                                            
+      out.write("\n");
+      out.write("                                                        </select>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"input-field col s6 m3 l3\">\n");
+      out.write("                                                        <input placeholder=\"Peso\" pattern=\"^[0-9]+$\" required onkeypress=\"numerico()\" id=\"peso\" name=\"peso\" type=\"text\" class=\"validate\">\n");
+      out.write("                                                        <label for=\"Peso\">Peso:</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"input-field col s6 m3 l3\">\n");
+      out.write("                                                        <input placeholder=\"Cm.\" id=\"altura\" required onkeypress=\"numerico()\" pattern=\"^[0-9]+$\" name=\"altura\" type=\"text\" class=\"validate\">\n");
+      out.write("                                                        <label for=\"altura\">Altura en cm.</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("\n");
+      out.write("                                                    <div class=\"input-field col s6 m3 l3\">\n");
+      out.write("                                                        <select id=\"sexo\" name=\"sexo\" required>\n");
+      out.write("                                                            <option value=\"0\" selected disable>Selecciona un sexo</option>\n");
+      out.write("                                                            <option value=\"1\" >Masculino</option>\n");
+      out.write("                                                            <option value=\"2\" >Femenino</option>\n");
+      out.write("                                                        </select>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"input-field col s6 m3 l3\">\n");
+      out.write("                                                        <input id=\"fecha_n\" required  pattern=\"^[0-9]+$\" name=\"fecha_n\" type=\"date\">\n");
+      out.write("                                                        <label for=\"fecha_n\">Fecha</label>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"s12\" id=\"diagnosticodisponible\">\n");
+      out.write("                                                        <div class=\"col s6 m3 l3\">\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\"  value=\"1\" name=\"a1\" id=\"a1\" />\n");
+      out.write("                                                                    <span>Asma</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"2\" name=\"a2\" id=\"a2\" />\n");
+      out.write("                                                                    <span>Fibrosis Quística</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                        </div>\n");
+      out.write("                                                        <div class=\"col s6 m3 l3\">\n");
+      out.write("                                                            <p>    \n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"3\" name=\"a3\" id=\"a3\" />\n");
+      out.write("                                                                    <span>Diabetes</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"4\" name=\"a4\" id=\"a4\" />\n");
+      out.write("                                                                    <span>Hipoglucemia</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                        </div> \n");
+      out.write("                                                        <div class=\"col s6 m3 l3\" >\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"5\" name=\"a5\" id=\"a5\" />\n");
+      out.write("                                                                    <span>Parálisis cerebral</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\"value=\"6\" name=\"a6\" id=\"a6\" />\n");
+      out.write("                                                                    <span>Autismo</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                        </div>\n");
+      out.write("                                                        <div class=\"col s6 m3 l3\" >\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"7\" name=\"a7\" id=\"a7\" />\n");
+      out.write("                                                                    <span>Déficit de Atención</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                            <p>\n");
+      out.write("                                                                <label>\n");
+      out.write("                                                                    <input type=\"checkbox\" class=\"filled-in\" value=\"8\" name=\"a8\" id=\"a8\" />\n");
+      out.write("                                                                    <span>Hiperactividad</span>\n");
+      out.write("                                                                </label>\n");
+      out.write("                                                            </p>\n");
+      out.write("                                                        </div>\n");
+      out.write("                                                    </div>\n");
+      out.write("\n");
+      out.write("                                                    <br><br><br><br><br><br><br><br><br><br><br>\n");
+      out.write("                                                    <button class=\"btn blue\" type=\"submit\" name=\"action\">Guardar<i class=\"material-icons right\">save</i>\n");
+      out.write("                                                    </button>\n");
+      out.write("\n");
+      out.write("                                                </form>\n");
+      out.write("                                            </div>\n");
+      out.write("\n");
+      out.write("                                        </div></th>\n");
+      out.write("                                </tr>\n");
+      out.write("                                <tr>\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <th class=\"hide-on-med-and-up\" colspan=\"2\">\n");
+      out.write("                                        <form>\n");
+      out.write("                                            <div class=\"input-field\" style=\"padding: 0\">\n");
+      out.write("                                                <input id=\"search\" type=\"search\" required>\n");
+      out.write("                                                <label  for=\"search\"><i class=\"material-icons\">search</i></label>\n");
+      out.write("                                                <i class=\"material-icons\">close</i>\n");
+      out.write("                                            </div>\n");
+      out.write("                                        </form>\n");
+      out.write("                                    </th>\n");
+      out.write("                                </tr>\n");
+      out.write("                                </tr>\n");
+      out.write("                            </thead>\n");
+      out.write("                            <tbody id=\"milista\">\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <td>\n");
+      out.write("                                        <ul class=\"collection\">\n");
+      out.write("                                    ");
+
+                                        Iinfantedao control_infante=new impinfante();
+                                        ArrayList<infante> lista_infantes=control_infante.treinfantes(correo);
+                                        for(int i=0;i<lista_infantes.size();i++){   
+                                            Iafeccionesdao controla_afecciones=new impafecciones();
+                                            ArrayList<afecciones> lista_afecciones=controla_afecciones.traeafeccionesInfante(lista_infantes.get(i).getId_infante());
+                                            Idispositivodao controla_dispositivo=new impdispositivo();
+                                            dispositivo dispo=controla_dispositivo.traedispositivo(lista_infantes.get(i).getId_infante());
+                                            infante infan=lista_infantes.get(i);
+                                    
+      out.write("\n");
+      out.write("                                    \n");
+      out.write("                                            <li class=\"collection-item avatar\">\n");
+      out.write("                                                <i class=\"material-icons circle blue large\">child_friendly</i>\n");
+      out.write("                                                <span class=\"title\">Número de bebé: ");
+out.print((i+1));
+      out.write("</span>\n");
+      out.write("                                                <p>Nombre: ");
+out.print(infan.getNombre());
+      out.write("</p>\n");
+      out.write("                                                <p>Peso: ");
+out.print(infan.getPeso());
+      out.write(" </p>\n");
+      out.write("                                                <p>Estatura: ");
+out.print(infan.getAltura());
+      out.write(" </p>\n");
+      out.write("\n");
+      out.write("                                                <a class=\" secondary-content btn modal-trigger blue\" href=\"\"><i class=\"material-icons right\">edit</i>Editar</a>\n");
+      out.write("                                            </li>\n");
+      out.write("                                        \n");
+      out.write("                                    ");
+
+                                        }
+                                    
+      out.write("\n");
+      out.write("                                        </ul>  \n");
+      out.write("                                    </td>\n");
+      out.write("                                </tr>\n");
+      out.write("\n");
+      out.write("                            </tbody>\n");
+      out.write("                        </table>\n");
+      out.write("                    </div>\n");
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("        ");
+
+                } else {
+                    out.println("<script>alert('Inicia sesion primero');</script>");
+                    out.print("<Script>presiona2();</Script>");
+                }
+            }
+        
+      out.write("\n");
+      out.write("    </body>\n");
+      out.write("</html>");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}

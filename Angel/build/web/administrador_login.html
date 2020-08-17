@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="post" action="inicia_sesion_administrador">
+            <input type="text" name="correo" id="correo" placeholder="Correo electronico">
+            <input type="password" name="contra" id="contra" placeholder="Contraseña">
+            <input type="submit" value="Iniciar sesion">
+        </form>
+        <form method="post" action="registra_administrador">
+            <input type="text" name="correo" id="correo" placeholder="Correo electronico">
+            <input type="password" name="contra" id="contra" placeholder="Contraseña">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <select name="modulo">
+                <option value="0" disabled selected>Seleccione el modulo del problema</option>
+                <option value="1">Localizacion</option>
+                <option value="2">Seguimiento medico</option>
+                <option value="3">Estimulacion temprana</option>
+                <option value="4">Consejos y directorio</option>
+                <option value="5">Usuario</option>
+                <option value="6">FAQS</option>
+            </select>
+            <input type="submit" value="Registrarse">
+        </form>
+    </body>
+</html>

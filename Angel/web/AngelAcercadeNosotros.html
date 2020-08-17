@@ -1,0 +1,176 @@
+
+<html>
+    <head>
+        <title>Angel-Acerca de Nosotros</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="imagenes/icono.png" />
+
+        <link rel="shortcut icon" href="favicon.ico"> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+        <style>
+            body{
+                background: url(imagenes/fondoacerca.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;      
+                background-size: cover;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }   
+            main {
+                flex: 1 0 auto;
+            }
+
+            footer {
+                background-color: black;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+
+            } .input-field label {
+                color: black!important;
+            }
+            /* label focus color */
+            .input-field input[type=email]:focus + label {
+                color: black! important;
+            }
+            /* label underline focus color */
+            .input-field input[type=email]:focus {
+                border-bottom: 1px solid #0d47a1! important;
+                box-shadow: 0 1px 0 0 #0d47a1 ! important;
+            }
+
+            .input-field input[type=email].valid {
+                border-bottom: 1px solid #76ff03!important;
+                box-shadow: 0 1px 0 0 #76ff03!important;
+            }
+
+            .input-field input[type=email].invalid {
+                border-bottom: 1px solid red !important;
+                box-shadow: 0 1px 0 0 red!important;
+            }
+            /* icon prefix focus color */
+            .input-field .prefix.active {
+                color: #000;
+            }
+        </style>
+        <script>
+
+            function email() {
+                var letras = "@._-1234567890ABCDEFGHIKKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                var x = event.keyCode;
+                var letra = String.fromCharCode(x);
+                var n = letras.indexOf(letra);
+                if (n === -1) {
+                    event.returnValue = false;
+                }
+            }
+        </script>
+    </head>
+
+
+    <body>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav();
+            });
+        </script>
+
+
+        <nav>
+            <div class="nav-wrapper light-blue lighten-2">
+                <a  class="brand-logo center flow-text"><i class="material-icons">cloud</i>"Angel"</a>
+                <a data-target="mobile-demo" class="sidenav-trigger" href="javascript:history.back()"><i class="material-icons left white-text">arrow_back</i>Regresar</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="javascript:history.back()"><i class="material-icons left">arrow_back</i>Regresar</a></li>                </ul>
+            </div>
+        </nav>
+
+        <div class="row" style="width: 100%">
+            <div class="col s12 white" style="text-align: center; margin-top:1em">
+                <h4>¿Qué es Angel?</h4>
+                <h5>¡La mejor plataforma de cuidado infantil!</h5>
+                <p>Donde podrás obtener servicios de:</p>
+                <div class="col s6 m3 l3">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="imagenes/l1.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Seguridad<i class="material-icons right">arrow_drop_down_circle</i></span>
+                            <p>Conoce las medidas más seguras de cuidado infantil.</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Asegúralos<i class="material-icons right">close</i></span>
+                            <p>En Angel Security Service encontrarás consejos que te ayudarán a cuidar a tu bebé.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s6 m3 l3">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="imagenes/l2.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Localización<i class="material-icons right">arrow_drop_down_circle</i></span>
+                            <p>Localiza a tu hijo en cualquier momento.</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Localízalos<i class="material-icons right">close</i></span>
+                            <p>La plataforma te brinda la opción de conocer la localización de tu infante en tiempo real en cualquier instante.</p>
+                        </div>
+                    </div>
+                </div><div class="col s3">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="imagenes/l4.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Salud<i class="material-icons right">arrow_drop_down_circle</i></span>
+                            <p>Permanece pendiente del estado del bebé.</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Cuídalos<i class="material-icons right">close</i></span>
+                            <p>Asimismo obtendrás un formato médico actualizable en el que conocerás el estado de salud.</p>
+                        </div>
+                    </div>
+                </div><div class="col s3">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="imagenes/l3.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Contactos<i class="material-icons right">arrow_drop_down_circle</i></span>
+                            <p>Conoce a más personas que puedan ayudarte.</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Ayúdalos<i class="material-icons right">close</i></span>
+                            <p>En Angel te damos la maravillosa opción de brindarte el contacto de personas especializadas en su campo para que el niño pueda ser ayudado en todo momento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>                           
+        </div>
+
+        <footer class="page-footer light-blue lighten-2">
+            <div class="container" style="text-align: center">
+                <h5>© 2018 Trinity Corps</h5>
+
+            </div>
+
+        </footer>
+
+    </body>
+</html>

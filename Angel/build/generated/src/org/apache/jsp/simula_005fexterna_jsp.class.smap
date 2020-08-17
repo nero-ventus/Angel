@@ -1,0 +1,18 @@
+SMAP
+simula_005fexterna_jsp.java
+JSP
+*S JSP
+*F
++ 0 simula_externa.jsp
+simula_externa.jsp
+*L
+5,17:49
+22,21:67
+42,26:88
+68,3:115
+70,4:118
+74,4:123
+77,4:127
+81,2:132
+82,4:134
+*E
