@@ -26,7 +26,6 @@ public class imptickets implements Iticketsdao{
     private final String actualiza_estado="call sp_actualiza_ticket_estado(?);";
     private final String actualiza="call sp_responde_ticket(?,?,?);";
     private final String trae_varios="call sp_trae_tickets(?);";
-    private final String trae_varios_respondidos="call sp_trae_tickets_respondidos(?);";
     @Override
     public int altaticket(tickets a) {
         int valida=0;
@@ -138,23 +137,5 @@ public class imptickets implements Iticketsdao{
         }
         return lista_tickets;
     }
-    @Override
-    public ArrayList<tickets> traeTicketsRespondidos(int modulou) {
-        ArrayList<tickets> lista_tickets=new ArrayList<>();
-        try{
-            conexion_base conecta=new conexion_base();
-            conex=conecta.getConex();
-            sta=conex.prepareCall(trae_varios_respondidos);
-            sta.setInt(1, modulou);
-            resul=sta.executeQuery();
-            while(resul.next()){
-                lista_tickets.add(new tickets(resul.getInt(1), resul.getInt(2), resul.getString(3), resul.getInt(4), resul.getInt(5), resul.getString(6), resul.getString(7)));
-            }
-            conex.close();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        return lista_tickets;
-    }
+    
 }

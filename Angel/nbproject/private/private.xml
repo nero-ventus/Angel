@@ -12,8 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/devil/Documents/Cecyt%209/6_Semestre/Proyectos_2/Angel/src/java/com/angel/bd/conexion_base.java</file>
-            <file>file:/C:/Users/devil/Documents/Cecyt%209/6_Semestre/Proyectos_2/Angel/src/java/com/angel/impdao/impusuario.java</file>
+            <file>file:/C:/Users/devil/Documents/6_Semestre/Metodos%20agiles/Primera/Angel/src/java/com/angel/api/ws_inicia.java</file>
+            <file>file:/C:/Users/devil/Documents/6_Semestre/Metodos%20agiles/Primera/Angel/src/java/com/angel/modelo/dispositivo.java</file>
+            <file>file:/C:/Users/devil/Documents/6_Semestre/Metodos%20agiles/Primera/Angel/src/java/com/angel/api/ws_dispositivos.java</file>
+            <file>file:/C:/Users/devil/Documents/6_Semestre/Metodos%20agiles/Primera/Angel/src/java/com/angel/controlador/inicia_sesion.java</file>
+            <file>file:/C:/Users/devil/Documents/6_Semestre/Metodos%20agiles/Primera/Angel/src/java/com/angel/modelo/usuario.java</file>
         </group>
     </open-files>
 </project-private>

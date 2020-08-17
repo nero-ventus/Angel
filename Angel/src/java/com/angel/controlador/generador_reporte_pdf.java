@@ -265,7 +265,7 @@ public class generador_reporte_pdf extends HttpServlet {
                             peso.setBorderRight(Border.NO_BORDER);
                             peso.setBorderBottom(Border.NO_BORDER);
                             peso.setBorderLeft(Border.NO_BORDER);
-                            peso.add(new Paragraph("Peso: "+repor.getPeso()+" gr"));
+                            peso.add(new Paragraph("Peso: "+repor.getPeso()+" g"));
                             contenedor_princi.addCell(peso);
                             
                             Cell tempe=new Cell(1, 1);

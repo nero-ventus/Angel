@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class impdispositivo implements Idispositivodao{
     private final String llamar="call sp_getdispositivos(?)";
     private final String llamar1="call sp_getdispositivo(?)";
+    private final String llamarOcupados="call sp_getdispositivos_ocupados(?)";
     Connection conex=null;
     PreparedStatement sta=null;
     ResultSet resul=null;
@@ -76,5 +77,25 @@ public class impdispositivo implements Idispositivodao{
             System.out.println(e.getMessage());
         }
         return libres;
+    }
+    
+    @Override
+    public ArrayList<dispositivo> tredispositivosOcupados(String correo) {
+        ArrayList<dispositivo> ocupados=new ArrayList<>();
+        try{
+            conexion_base conecta=new conexion_base();
+            conex=conecta.getConex();
+            sta=conex.prepareCall(llamarOcupados);
+            sta.setString(1, correo);
+            resul=sta.executeQuery();
+            while(resul.next()){
+                ocupados.add(new dispositivo(resul.getString(1), resul.getString(2), resul.getString(3)));
+            }
+            conex.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return ocupados;
     }
 }

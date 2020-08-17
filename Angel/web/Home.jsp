@@ -210,7 +210,7 @@
             <li class="blue"><a  class="white-text"><i class="material-icons left white-text">person_pin</i><% out.print("Bienvenido: " + ESAPI.encoder().decodeForHTML(usua.getNombre())); %></a></li>
             <li class="blue white-text"><a href="AngelUsuario.jsp" class="white-text"><i class="material-icons left white-text">edit</i>Editar Información</a></li>
             <li class="blue white-text"><a href="AngelGestionInfantil.jsp" class="white-text"><i class="material-icons left white-text">child_friendly</i>Gestión Infantil</a></li>
-            <li class="blue white-text"><a href="" class="white-text"><i class="material-icons left white-text">my_location</i>Localización</a></li>
+            <li class="blue white-text"><a href="AngelLocalizacion.jsp" class="white-text"><i class="material-icons left white-text">my_location</i>Localización</a></li>
             <li class="blue white-text"><a href="FAQS.jsp" class="white-text"><i class="material-icons left white-text">help</i>Ayuda</a></li>
             <li class="blue white-text"><a href="cerrar_sesion" class="white-text"><i class="material-icons left white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>

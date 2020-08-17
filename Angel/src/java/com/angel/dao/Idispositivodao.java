@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public interface Idispositivodao {
     int altadispositivo(dispositivo a,String correo);
+
+    ArrayList<dispositivo> tredispositivosOcupados(String correo);
     
     dispositivo traedispositivo(int id_infante);
     

@@ -15,6 +15,4 @@ public interface Iticketsdao {
     int borratickets(int id_ticket);
     
     ArrayList<tickets> traeTickets(int modulou);
-    
-    ArrayList<tickets> traeTicketsRespondidos(int modulou);
 }

@@ -217,7 +217,7 @@
             <li class="blue"><a href="AngelUsuario.jsp"><i class="material-icons left">edit</i>Usuario</a></li>
             <li class="blue"><a href="AngelGestionInfantil.jsp"><i class="material-icons left">child_friendly</i>Niños</a></li>
             <li class="blue"><a href="AngelLocalizacion.jsp"><i class="material-icons left">my_location</i>Ubicación</a></li>
-            <li class="blue"><a href="FAQS.jsp"><i class="material-icons left">help</i>Ayuda</a></li>
+            <li class="blue"><a href="FAQS.html"><i class="material-icons left">help</i>Ayuda</a></li>
             <li class="blue"><a href="cerrar_sesion"><i class="material-icons left">power_settings_new</i>Salir</a></li>
         </ul>
         <nav class="blue" style="z-index: 99999">

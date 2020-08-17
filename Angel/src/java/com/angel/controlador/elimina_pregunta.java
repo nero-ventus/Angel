@@ -47,7 +47,7 @@ public class elimina_pregunta extends HttpServlet {
             out.println("<script>\n" +
 "            function presiona1(){\n" +
 "                setTimeout(function (){\n" +
-"                    window.location.replace('administrador_preguntas_a_responder.jsp');\n" +
+"                    window.location.replace('preguntas_a_responder.jsp');\n" +
 "                },0);\n" +
 "            }\n" +
 "            function presiona2(){\n" +

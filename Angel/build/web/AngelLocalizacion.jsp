@@ -134,7 +134,7 @@
                     <h4><u>Ubicación en casa <i class="material-icons small">home</i></u></h4>
                     <p>Al elegir esta opción podrás observar los movimientos de tu bebé en casa a través del paquete de sensores que Angel te proporcionará al contratar su servicio.</p>
                     <div class="col offset-s3 s6">
-                        <img class="responsive-img" src="img/casa.png">
+                        <img class="responsive-img" src="http://mybankmantra.com/images/backgrounds/home-loan-section1.png">
                     </div>
                     <a href="AngelLocalCasa.jsp" class="waves-effect waves-light btn-large white blue-text col s2 offset-s5"><h5>¡Ir!</h5></a>
 

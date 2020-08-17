@@ -231,7 +231,7 @@
             <li class="white "><a href="Home.jsp" class="light-blue-text"><i class="material-icons left">home</i>Inicio</a></li>
             <li class="white "><a href="AngelGestionInfantil.jsp" class="light-blue-text"><i class="material-icons left">child_friendly</i>Niños</a></li>
             <li class="white "><a href="AngelLocalizacion.jsp" class="light-blue-text"><i class="material-icons left">my_location</i>Ubicación</a></li>
-            <li class="white "><a href="FAQS.jsp" class="light-blue-text"><i class="material-icons left">help</i>Ayuda</a></li>
+            <li class="white "><a href="badges.html" class="light-blue-text"><i class="material-icons left">help</i>Ayuda</a></li>
             <li class="white "><a href="cerrar_sesion" class="light-blue-text"><i class="material-icons left">power_settings_new</i>Salir</a></li>
         </ul>
         <nav class="white" style="z-index: 99999">
@@ -250,7 +250,7 @@
             <li><a href="Home.jsp" class="white light-blue-text"><i class="material-icons left light-blue-text">home</i>Regresar a Inicio</a></li>
             <li><a href="AngelGestionInfantil.jsp" class="white light-blue-text"><i class="material-icons left light-blue-text">child_friendly</i>Gestión Infantil</a></li>
             <li><a href="AngelLocalizacion.jsp" class="white light-blue-text"><i class="material-icons left light-blue-text">my_location</i>Localización</a></li>
-            <li><a href="FAQS.jsp" class="white light-blue-text"><i class="material-icons left light-blue-text">help</i>Ayuda</a></li>
+            <li><a href="badges.html" class="white light-blue-text"><i class="material-icons left light-blue-text">help</i>Ayuda</a></li>
             <li><a href="cerrar_sesion" class="white light-blue-text"><i class="material-icons left light-blue-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
         <div class="row" style="text-align: center">

@@ -64,7 +64,9 @@ public class seguridad_recuperar extends HttpServlet {
             }
             validadCaracteres validac=new validadCaracteres();
             int validacaracteres=validac.validaRecupera(uncorreo);
+            System.out.println("1");
             if(validacaracteres==0){
+                System.out.println("2");
                 String correo=ESAPI.encoder().encodeForHTML(uncorreo);
                 String encripcorreo=encripta.encriptar(correo);
                 request.setAttribute("correo", encripcorreo);

@@ -6,10 +6,22 @@
 	 version="3.1">
     <session-config>
         <session-timeout>
-            30
+            600
         </session-timeout>
     </session-config>
-    <error-page>
-        <location>/error.html</location>
-    </error-page>
+    
+    <servlet>
+        <servlet-name>AngelRest</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.angel.api</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AngelRest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 </web-app>

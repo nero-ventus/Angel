@@ -165,20 +165,9 @@
                 window.location.replace('AngelLogIn.html');
             }, 0);
         }
-        function cambio_filtro(){
-            document.getElementById("filtro").submit();
-        }
+
     </script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.sidenav').sidenav();
-                $('select').formSelect();
-                $('.fixed-action-btn').floatingActionButton();
-            });
-        </script>
+
     <body>
         <%
             HttpSession datos_sesion = request.getSession();
@@ -210,169 +199,84 @@
                                 <tr style="text-align: center">
 
                                     <th class="center flow-text"><H5>Preguntas recibidas</H5></th>
-                                    <th class="input-field col s6 m5 l5 brown-text flow-text right">
-                                        <form id="filtro" method="post" action="administrador_responder_tickets.jsp">
-                                            <select id="filtro_select" name="filtro" class="validate flow-text" required onchange="cambio_filtro()">
-                                                <option value="1" selected>Pendientes</option>
-                                                <option value="2">Respondidos</option>
-                                            </select>
-                                        </form>
-                                    </th>
                                 </tr>
 
 
                             </thead>
                             <tbody id="milista">
+
+                                <%                                        Iticketsdao controla_tickets = new imptickets();
+                                    ArrayList<tickets> lista_tickets = controla_tickets.traeTickets(admi.getModulo());
+                                    controla_tickets.actualizaticketestado(admi.getModulo());
+                                    for (int i = 0; i < lista_tickets.size(); i++) {
+                                %>
                                 <tr>
+                                    <td>
+                                        <ul class="collection">
 
-                                    <%                                        
-                                        Iticketsdao controla_tickets = new imptickets();
-                                        int tipo_tickets=0;
-                                        try{
-                                            tipo_tickets=Integer.parseInt(request.getParameter("filtro"));
-                                        }
-                                        catch(Exception e){
-                                            tipo_tickets=0;
-                                        }
-                                        if(tipo_tickets==0 || tipo_tickets==1){
-                                        %>
-                                        <script>
-                                            document.getElementById("filtro_select").value=1;
-                                        </script>
-                                        <%
-                                            ArrayList<tickets> lista_tickets = controla_tickets.traeTickets(admi.getModulo());
-                                            controla_tickets.actualizaticketestado(admi.getModulo());
-                                            for (int i = 0; i < lista_tickets.size(); i++) {
-                                        %>
-                                        <td>
-                                            <ul class="collection">
-                                                <li class="collection-item avatar">
-                                                    <i class="material-icons circle grey darken-1 large" style="position: absolute; top:75%">confirmation_number</i>
-                                                    <span class="title">Id usuario: <%out.print(lista_tickets.get(i).getId_usuario());%></span>
-                                                    <p>Id ticket: <%out.print(lista_tickets.get(i).getId_ticket());%></p>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 1) {
-                                                    %>
-                                                    <p>Modulo: Localizacion</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 2) {
-                                                    %>
-                                                    <p>Modulo: Seguimiento Medico</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 3) {
-                                                    %>
-                                                    <p>Modulo: Estimulacion temprana</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 4) {
-                                                    %>
-                                                    <p>Modulo: Consejos y directorio</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 5) {
-                                                    %>
-                                                    <p>Modulo: Usuario</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <%
-                                                        if (lista_tickets.get(i).getModulo() == 6) {
-                                                    %>
-                                                    <p>Modulo: FAQS</p>
-                                                    <%
-                                                        }
-                                                    %>
-                                                    <p>Pregunta: <%out.print(lista_tickets.get(i).getPregunta());%> </p>
-                                                    <form action="responde_ticket" method="post">
-                                                        <div class="input-field col s12 m12 l12">
-                                                            <input type="text" onkeypress="alfanumerico()" class="validate" name="respuesta" id="respuesta" required placeholder="Respuesta">
-                                                        </div>
-                                                        <input type="text" name="id_ticket" readonly style="visibility: hidden; position: absolute; float: top; z-index: 0" value="<%out.print(lista_tickets.get(i).getId_ticket());%>">
-
-                                                        <input class=" secondary-content btn grey darken-1 modal-trigger" style="position: absolute;top:75%" type="submit" value="Responder y subir">
-                                                    </form>
-                                                </li>
+                                            <li class="collection-item avatar">
+                                                <i class="material-icons circle grey darken-1 large" style="position: absolute; top:75%">confirmation_number</i>
+                                                <span class="title">Id usuario: <%out.print(lista_tickets.get(i).getId_usuario());%></span>
+                                                <p>Id ticket: <%out.print(lista_tickets.get(i).getId_ticket());%></p>
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 1) {
+                                                %>
+                                                <p>Modulo: Localizacion</p>
                                                 <%
                                                     }
-                                                }
-                                                else{
-                                                    %>
-                                                    <script>
-                                                        document.getElementById("filtro_select").value=2;
-                                                    </script>
-                                                    <%
-                                                    ArrayList<tickets> lista_tickets = controla_tickets.traeTicketsRespondidos(admi.getModulo());
-                                                    controla_tickets.actualizaticketestado(admi.getModulo());
-                                                    for (int i = 0; i < lista_tickets.size(); i++) {
                                                 %>
-                                                <td>
-                                                    <ul class="collection">
-                                                        <li class="collection-item avatar">
-                                                            <i class="material-icons circle grey darken-1 large" style="position: absolute; top:25%">confirmation_number</i>
-                                                            <span class="title">Id usuario: <%out.print(lista_tickets.get(i).getId_usuario());%></span>
-                                                            <p>Id ticket: <%out.print(lista_tickets.get(i).getId_ticket());%></p>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 1) {
-                                                            %>
-                                                            <p>Modulo: Localizacion</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 2) {
-                                                            %>
-                                                            <p>Modulo: Seguimiento Medico</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 3) {
-                                                            %>
-                                                            <p>Modulo: Estimulacion temprana</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 4) {
-                                                            %>
-                                                            <p>Modulo: Consejos y directorio</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 5) {
-                                                            %>
-                                                            <p>Modulo: Usuario</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <%
-                                                                if (lista_tickets.get(i).getModulo() == 6) {
-                                                            %>
-                                                            <p>Modulo: FAQS</p>
-                                                            <%
-                                                                }
-                                                            %>
-                                                            <p>Pregunta: <%out.print(lista_tickets.get(i).getPregunta());%> </p>
-                                                            <p>Respuesta: <%out.print(lista_tickets.get(i).getRespuesta());%> </p>
-                                                        </li>
-                                                        <%
-                                                            }
-                                                        }
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 2) {
                                                 %>
-                                        </ul>  
+                                                <p>Modulo: Seguimiento Medico</p>
+                                                <%
+                                                    }
+                                                %>
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 3) {
+                                                %>
+                                                <p>Modulo: Estimulacion temprana</p>
+                                                <%
+                                                    }
+                                                %>
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 4) {
+                                                %>
+                                                <p>Modulo: Consejos y directorio</p>
+                                                <%
+                                                    }
+                                                %>
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 5) {
+                                                %>
+                                                <p>Modulo: Usuario</p>
+                                                <%
+                                                    }
+                                                %>
+                                                <%
+                                                    if (lista_tickets.get(i).getModulo() == 6) {
+                                                %>
+                                                <p>Modulo: FAQS</p>
+                                                <%
+                                                    }
+                                                %>
+                                                <p>Pregunta: <%out.print(lista_tickets.get(i).getPregunta());%> </p>
+                                                <form action="responde_ticket" method="post">
+                                                    <div class="input-field col s12 m12 l12">
+                                                        <input type="text" onkeypress="alfanumerico()" class="validate" name="respuesta" id="respuesta" required placeholder="Respuesta">
+                                                    </div>
+                                                    <input type="text" name="id_ticket" readonly style="visibility: hidden; position: absolute; float: top; z-index: 0" value="<%out.print(lista_tickets.get(i).getId_ticket());%>">
+
+                                                    <input class=" secondary-content btn grey darken-1 modal-trigger" style="position: absolute;top:75%" type="submit" value="Responder y subir">
+                                                </form>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
+                                <%
+                                    }
+                                %>
+
                             </tbody>
                         </table>
                     </div>

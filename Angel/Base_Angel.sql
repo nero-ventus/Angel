@@ -452,6 +452,56 @@ create table tickets(
     6=FAQS
 */
 -------------------------------------------------------------
+create table ingeniero(
+	correo varchar(100) primary key,
+    contra varchar(30) not null,
+    nombre varchar(30),
+    apellidos varchar(30)
+);
+-------------------------------------------------------------
+create table gerente(
+	correo_inge varchar(100) unique,
+    foreign key (correo_inge) references angel.ingeniero(correo)
+);
+-------------------------------------------------------------
+create table operador(
+	correo varchar(100) primary key,
+    contra varchar(30) not null,
+    nombre varchar(30),
+    apellidos varchar(30)
+);
+-------------------------------------------------------------
+create table reporte_evento(
+	id_repor_evento int primary key auto_increment,
+    fecha date,
+    estado int,
+    descripcion varchar(300),
+    solucion varchar(300),
+    correo_inge varchar(100) null,
+    correo_usua varchar(100),
+    foreign key (correo_inge) references angel.ingeniero(correo),
+    foreign key (correo_usua) references angel.usuario(correo)
+);
+/*
+	estado:
+    1=Abierto
+    2=Cerrado
+*/
+-------------------------------------------------------------
+create table etiquetas(
+	id_etiqueta int primary key auto_increment,
+    nombre varchar(30)
+);
+-------------------------------------------------------------
+create table rela_etiquetas_reporte(
+	id_rela_eti_repor int primary key auto_increment,
+    id_reporte_evento int,
+    id_etiqueta int,
+    cantidad int,
+    foreign key(id_reporte_evento) references angel.reporte_evento (id_repor_evento),
+    foreign key(id_etiqueta) references angel.etiquetas (id_etiqueta)
+);
+-------------------------------------------------------------
 drop procedure if exists sp_usuario;
 delimiter **
 create procedure sp_usuario(in tipo int,in nombreu varchar(50),in apellido_pu varchar(50),in apellido_mu varchar(50),in correou varchar(100),in contrau varchar(50),in codigou varchar(16),in nexu int,in calleu varchar(100),in municipiou varchar(100),in estadou int,in correoo varchar(100))
@@ -734,6 +784,7 @@ delimiter **
 create procedure sp_delete_usuario(in correou varchar(100))
 begin
 declare iddirecu int;
+delete angel.quejas from angel.quejas inner join angel.usuario where binary angel.quejas.id_usuario=angel.usuario.id_usuario and binary angel.usuario.correo=correou;
 delete angel.config_linterna from angel.config_linterna inner join angel.usuario where binary angel.config_linterna.id_usuario=angel.usuario.id_usuario and binary angel.usuario.correo=correou;
 delete angel.config_lexterna from angel.config_lexterna inner join angel.usuario where binary angel.config_lexterna.id_usuario=angel.usuario.id_usuario and binary angel.usuario.correo=correou;
 set iddirecu=(select angel.direccion.id_direccion from angel.direccion inner join angel.usuario where binary angel.direccion.id_direccion=angel.usuario.id_direccion and  binary angel.usuario.correo=correou);
@@ -927,14 +978,6 @@ select angel.tickets.* from angel.tickets where binary angel.tickets.modulo=modu
 end;**
 delimiter ;
 /*---------------------------------------------------------------------------*/
-drop procedure if exists sp_trae_tickets_respondidos;
-delimiter **
-create procedure sp_trae_tickets_respondidos(in modulou int)
-begin
-select angel.tickets.* from angel.tickets where binary angel.tickets.modulo=modulou and binary angel.tickets.respuesta!='Sin respuesta';
-end;**
-delimiter ;
-/*---------------------------------------------------------------------------*/
 drop procedure if exists sp_responde_ticket;
 delimiter **
 create procedure sp_responde_ticket(in id_ticketu int,in correo_admiu varchar(100),in respuestau varchar(300))
@@ -943,3 +986,246 @@ update angel.tickets set angel.tickets.correo_admin=correo_admiu,angel.tickets.r
 select 1;
 end;**
 delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_registra_operador;
+delimiter **
+create procedure sp_registra_operador(in correou varchar(100),in contrau varchar(30),in nombreu varchar(30),in apellidosu varchar(30))
+begin
+insert into angel.operador values(correou,contrau,nombreu,apellidosu);
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_operador;
+delimiter **
+create procedure sp_trae_operador(in correou varchar(100),in contrau varchar(30))
+begin
+select angel.operador.* from angel.operador where binary angel.operador.correo=correou and binary angel.operador.contra=contrau;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_registra_ingeniero;
+delimiter **
+create procedure sp_registra_ingeniero(in correou varchar(100),in contrau varchar(30),in nombreu varchar(30),in apellidosu varchar(30))
+begin
+insert into angel.ingeniero values(correou,contrau,nombreu,apellidosu);
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_ingeniero;
+delimiter **
+create procedure sp_trae_ingeniero(in correou varchar(100),in contrau varchar(30))
+begin
+declare verifica int;
+set verifica=(select count(angel.gerente.correo_inge) from angel.gerente where binary angel.gerente.correo_inge=correou);
+if(verifica=0) then
+	select angel.ingeniero.* from angel.ingeniero where binary angel.ingeniero.correo=correou and binary angel.ingeniero.contra=contrau;
+else
+	select null;
+end if;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_ingeniero_sin_contra;
+delimiter **
+create procedure sp_trae_ingeniero_sin_contra(in correou varchar(100))
+begin
+declare verifica int;
+set verifica=(select count(angel.gerente.correo_inge) from angel.gerente where binary angel.gerente.correo_inge=correou);
+if(verifica=0) then
+	select angel.ingeniero.* from angel.ingeniero where binary angel.ingeniero.correo=correou;
+else
+	select null;
+end if;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_ingenieros;
+delimiter **
+create procedure sp_trae_ingenieros()
+begin
+select angel.ingeniero.* from angel.ingeniero inner join angel.gerente where binary angel.ingeniero.correo!=angel.gerente.correo_inge;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_ingeniero_o_gerente;
+delimiter **
+create procedure sp_trae_ingeniero_o_gerente(in correou varchar(100))
+begin
+select angel.ingeniero.* from angel.ingeniero where binary angel.ingeniero.correo=correou;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_registra_gerente;
+delimiter **
+create procedure sp_registra_gerente(in correou varchar(100),in contrau varchar(30),in nombreu varchar(30),in apellidosu varchar(30))
+begin
+insert into angel.ingeniero values(correou,contrau,nombreu,apellidosu);
+insert into angel.gerente values(correou);
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_gerente;
+delimiter **
+create procedure sp_trae_gerente(in correou varchar(100),in contrau varchar(30))
+begin
+declare verifica int;
+set verifica=(select count(angel.gerente.correo_inge) from angel.gerente where binary angel.gerente.correo_inge=correou);
+if(verifica=1) then
+	select angel.ingeniero.* from angel.ingeniero where binary angel.ingeniero.correo=correou and binary angel.ingeniero.contra=contrau;
+else
+	select null;
+end if;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_registra_reporte_evento;
+delimiter **
+create procedure sp_registra_reporte_evento(in fechau date,in descripcionu varchar(300),in correo_usuau varchar(100))
+begin
+insert into angel.reporte_evento values(0,fechau,1,descripcionu,'Sin Resolver',null,correo_usuau);
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_abiertos_sin_asignar;
+delimiter **
+create procedure sp_trae_reportes_evento_abiertos_sin_asignar()
+begin
+select * from angel.reporte_evento where angel.reporte_evento.estado=1 and  angel.reporte_evento.correo_inge is null;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_abiertos_asignados_sin_resolver;
+delimiter **
+create procedure sp_trae_reportes_evento_abiertos_asignados_sin_resolver()
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.estado=1 and binary angel.reporte_evento.correo_inge is not null and binary angel.reporte_evento.solucion='Sin Resolver';
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_abiertos_asignados;
+delimiter **
+create procedure sp_trae_reportes_evento_abiertos_asignados()
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.estado=1 and binary angel.reporte_evento.correo_inge is not null;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_cerrados_solucionados;
+delimiter **
+create procedure sp_trae_reportes_evento_cerrados_solucionados()
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.estado=2 and binary angel.reporte_evento.correo_inge is not null;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_asigna_reporte_evento;
+delimiter **
+create procedure sp_asigna_reporte_evento(in id_reporteu int,in correo_asigu varchar(100))
+begin
+update angel.reporte_evento set angel.reporte_evento.correo_inge=correo_asigu where binary angel.reporte_evento.id_repor_evento=id_reporteu;
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_asigna_reporte_evento_etiqueta;
+delimiter **
+create procedure sp_asigna_reporte_evento_etiqueta(in nombre_etiquetau varchar(30),in id_reporteu int)
+begin
+declare id_etiquetau int;
+insert into angel.etiquetas values(0,nombre_etiquetau);
+set id_etiquetau=(select last_insert_id());
+insert into angel.rela_etiquetas_reporte values(0,id_reporteu,id_etiquetau,0);
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_relaciona_reporte_evento_etiqueta;
+delimiter **
+create procedure sp_relaciona_reporte_evento_etiqueta(in id_etiquetau int,in id_reporteu int)
+begin
+declare cantidad_n int;
+set cantidad_n=(select angel.rela_etiquetas_reporte.cantidad from angel.rela_etiquetas_reporte where binary angel.rela_etiquetas_reporte.id_etiqueta=id_etiquetau);
+set cantidad_n=(cantidad_n+1);
+update angel.rela_etiquetas_reporte set angel.rela_etiquetas_reporte.cantidad=angel.rela_etiquetas_reporte.cantidad+1 where binary angel.rela_etiquetas_reporte.id_etiqueta=id_etiquetau;
+delete angel.reporte_evento from angel.reporte_evento where binary angel.reporte_evento.id_repor_evento=id_reporteu;
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_cantidad_etiqueta;
+delimiter **
+create procedure sp_trae_cantidad_etiqueta(in id_etiquetau int)
+begin
+select angel.rela_etiquetas_reporte.cantidad from angel.rela_etiquetas_reporte where binary angel.rela_etiquetas_reporte.id_etiqueta=id_etiquetau;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_get_relacion_reporte_evento_etiqueta;
+delimiter **
+create procedure sp_get_relacion_reporte_evento_etiqueta(in id_reporteu int)
+begin
+select angel.etiquetas.* from angel.etiquetas inner join angel.rela_etiquetas_reporte where binary angel.rela_etiquetas_reporte.id_reporte_evento=id_reporteu  and binary angel.rela_etiquetas_reporte.id_etiqueta=angel.etiquetas.id_etiqueta;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_etiquetas_todas;
+delimiter **
+create procedure sp_trae_etiquetas_todas()
+begin
+select angel.etiquetas.* from angel.etiquetas;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_cerrar_reporte_evento;
+delimiter **
+create procedure sp_cerrar_reporte_evento(in id_reporteu int)
+begin
+update angel.reporte_evento set angel.reporte_evento.estado=2 where binary angel.reporte_evento.id_repor_evento=id_reporteu;
+select 1;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_sin_responder_ingeniero;
+delimiter **
+create procedure sp_trae_reportes_evento_sin_responder_ingeniero(in correo_ingeu varchar(100))
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.solucion='Sin Resolver' and binary angel.reporte_evento.correo_inge=correo_ingeu;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reportes_evento_respondidos_ingeniero;
+delimiter **
+create procedure sp_trae_reportes_evento_respondidos_ingeniero(in correo_ingeu varchar(100))
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.solucion!='Sin Resolver' and binary angel.reporte_evento.correo_inge=correo_ingeu;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reporte_evento_abierto;
+delimiter **
+create procedure sp_trae_reporte_evento_abiertos(in id_reporteu int)
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.estado=1 and binary angel.reporte_evento.id_repor_evento=id_reporteu;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_trae_reporte_evento_cerrado;
+delimiter **
+create procedure sp_trae_reporte_evento_cerrado(in id_reporteu int)
+begin
+select angel.reporte_evento.* from angel.reporte_evento where binary angel.reporte_evento.estado=2 and binary angel.reporte_evento.id_repor_evento=id_reporteu;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/
+drop procedure if exists sp_soluciona_reporte_evento;
+delimiter **
+create procedure sp_soluciona_reporte_evento(in id_reporteu int,in solucionu varchar(300))
+begin
+update angel.reporte_evento set angel.reporte_evento.solucion=solucionu where binary angel.reporte_evento.id_repor_evento=id_reporteu;
+end;**
+delimiter ;
+/*---------------------------------------------------------------------------*/

@@ -230,7 +230,7 @@
                     </div>
                     <div class="input-field col s6 m2 l2">
                         <input type="text" id="peso" name="peso" onkeypress="numerico()" required placeholder="Peso">
-                        <label for="peso">Peso(gr):</label>
+                        <label for="peso">Peso(kg):</label>
                     </div>
 
                     <div class="input-field col s6 m2 l2">
